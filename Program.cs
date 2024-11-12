@@ -18,7 +18,7 @@ namespace addon_model_converter
 {
     public partial class Program
     {       
-        RootCommand rootCmd = new RootCommand(description: "Simple app to convert models to addons");
+        RootCommand rootCmd = new RootCommand(description: "Generate unique metadata for GTA5 models for FiveM addon compatability");
 
         Command pedCmd = new Command(
             name: "ped", 
