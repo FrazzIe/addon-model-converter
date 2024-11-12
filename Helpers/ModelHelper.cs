@@ -16,6 +16,7 @@ public static class ModelHelper
         return target
             .GetFiles("*.y*", searchCritera)
             .Where(f => allowedExtensions.Any(f.Extension.ToLower().EndsWith))
+            .Where(f => f.Directory is not null)
             .Select(f => new InterimModel(f))
             .GroupBy(i => new { i.Name, i.Directory.FullName })
             .Select(i => new Model(i.Key.Name, i.First().Directory, i.Select(i => i.File).ToArray()))

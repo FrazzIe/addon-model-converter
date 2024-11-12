@@ -5,7 +5,7 @@ public class InterimModel
     public InterimModel(FileInfo file)
     {            
         Name = file.GetModelName();
-        Directory = file.Directory;
+        Directory = file.Directory!;
         File = file;
     }
 
