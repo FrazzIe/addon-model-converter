@@ -36,7 +36,8 @@ public partial class Program
         vehicles
             .PromptUserForModelNames(prefix)
             .PrefixModelNames(prefix)
-            .RenameModels();
+            .RenameModels()
+            .UpdateVehicleMetadataWithModelNames();
 
         foreach (var item in vehicles.GroupBy(i => i.Directory.FullName))
             item.AsEnumerable()
