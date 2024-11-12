@@ -18,6 +18,7 @@ public static class VehicleHelper
     public static readonly string modelInfoRoot = "CVehicleModelInfo__InitDataList";
     public static readonly string modelInfoData = "InitDatas";
     public static readonly string modelInfoItemModel = "modelName";
+    public static readonly string modelInfoTexture = "txdName";
     public static readonly string modelInfoItemHandling = "handlingId";
     public static readonly string modelInfoTextureRelationships = "txdRelationships";
     public static readonly string modelInfoTextureRelationshipItemModel = "child";
@@ -107,6 +108,7 @@ public static class VehicleHelper
             vehicle.Variation?.Element(modelVariationItemModel)?.SetValue(vehicle.Name);
             vehicle.Handling?.Element(modelHandlingItemName)?.SetValue(vehicle.Name.ToUpper());
             vehicle.ModelInfo?.Element(modelInfoItemModel)?.SetValue(vehicle.Name);
+            vehicle.ModelInfo?.Element(modelInfoTexture)?.SetValue(vehicle.Name);
             vehicle.ModelInfo?.Element(modelInfoItemHandling)?.SetValue(vehicle.Name.ToUpper());
             vehicle.TextureRelationship?.Element(modelInfoTextureRelationshipItemModel)?.SetValue(vehicle.Name);
         }
