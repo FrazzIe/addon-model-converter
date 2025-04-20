@@ -23,7 +23,6 @@ public static class VehicleHelper
     public static readonly string modelInfoTextureRelationships = "txdRelationships";
     public static readonly string modelInfoTextureRelationshipItemModel = "child";
     public static readonly string modelInfoFile = "vehicles.meta";
-    public static readonly string[] modelInfoTags = { "gameName", "vehicleMakeName", "vehicleClass", "type" };
 
     
     
@@ -46,9 +45,16 @@ public static class VehicleHelper
     // <CVehicleModelInfo__InitDataList>
     //     <InitDatas>
     //        <Item>
-    public static XElement[] GetAllVehicleModelInfo(DirectoryInfo targetDir)
+    public static XElement[] GetAllVehicleModelInfo(DirectoryInfo targetDir, bool excludeDuplicates = false)
     {
-        return GetMetadataItems(targetDir, modelInfoRoot, modelInfoData);
+        var items = GetMetadataItems(targetDir, modelInfoRoot, modelInfoData);
+        
+        if (excludeDuplicates)
+            items = items.GroupBy(el => el.Element(modelInfoItemModel)?.Value)
+                .Select(g => g.First())
+                .ToArray();
+
+        return items;
     }
 
     // <CVehicleModelInfo__InitDataList>
